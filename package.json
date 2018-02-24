@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "npm run watch",
-    "watch": "npm-run-all -p watch:js watch:css watch:server",
+    "watch": "npm-run-all -p watch:js watch:css watch:server gulp",
     "watch:js": "npx parcel watch ./src/js/entry.js --out-dir ./src/assets --out-file app.js",
     "watch:css": "node-sass --watch ./src/sass/index.sass ./src/assets/screen.css --source-map true --include-path ./src/sass",
     "autoprefixer:assets": "postcss ./src/assets/screen.css --use autoprefixer --replace",
@@ -17,8 +17,8 @@
     "build:autoprefixer": "postcss ./build/screen.css --use autoprefixer --replace --no-map",
     "build:clean": "rimraf ./build",
     "build:copy": "cpx \"./src/assets/**/!(*.js|*.css|*.map)\" ./build",
-    "prettier": "npx prettier ./src/js/*.js --write"
-
+    "prettier": "npx prettier ./src/js/*.js --write",
+    "gulp": "npx gulp default"
   },
   "keywords": [],
   "author": "",
@@ -29,12 +29,16 @@
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.23.6",
     "cpx": "^1.5.0",
+    "gulp": "^3.9.1",
+    "gulp-ejs": "^3.1.2",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.0",
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
     "parcel-bundler": "^1.6.2",
     "postcss-cli": "^5.0.0",
     "prettier": "^1.10.2",
     "rimraf": "^2.6.2",
-    "onchange": "^3.3.0"
+    "standard": "^11.0.0"
   }
 }
