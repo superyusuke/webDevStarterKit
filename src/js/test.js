@@ -1,1 +1,1 @@
-export default ({id, name, test}) => console.log(`aa${id}, ${name} ${test}`)
+export default ({ id, name, test }) => console.log(`aa${id}, ${name} ${test}`);
