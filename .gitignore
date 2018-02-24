@@ -1,0 +1,14 @@
+/node_modules
+
+# Parcel のキャッシュファイル
+.cache
+
+# WebStorm のプロジェクト用ファイル
+.idea
+
+# sourceMap
+*.map
+
+# コンパイルされたもの
+/src/assets/app.js
+/src/assets/screen.css

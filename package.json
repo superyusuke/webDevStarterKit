@@ -1,0 +1,24 @@
+{
+  "name": "webDev2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "npm run watch",
+    "watch": "npm-run-all -p js:watch css:watch server:watch",
+    "js:watch": "npx parcel watch ./src/js/entry.js --out-dir ./src/assets --out-file app.js",
+    "css:watch": "node-sass --watch ./src/sass/index.sass ./src/assets/screen.css --source-map true --include-path ./src/sass",
+    "server:watch": "browser-sync start --server ./src/assets --files ./src/assets"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.23.6",
+    "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
+    "parcel-bundler": "^1.6.2"
+  }
+}
