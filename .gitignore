@@ -12,3 +12,4 @@
 # コンパイルされたもの
 /src/assets/app.js
 /src/assets/screen.css
+/src/assets/**/*.html
