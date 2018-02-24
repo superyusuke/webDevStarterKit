@@ -9,11 +9,11 @@
     "watch:js": "npx parcel watch ./src/js/entry.js --out-dir ./src/assets --out-file app.js",
     "watch:css": "node-sass --watch ./src/sass/index.sass ./src/assets/screen.css --source-map true --include-path ./src/sass",
     "watch:server": "browser-sync start --server ./src/assets --files ./src/assets",
+    "build": "npm-run-all -s build:clean build:copy -p build:js build:css",
     "build:js": "npx parcel build ./src/js/entry.js --out-dir ./build --out-file app.js",
     "build:css": "node-sass ./src/sass/index.sass ./build/screen.css --include-path ./src/sass --output-style compressed",
     "build:clean": "rimraf ./build",
-    "build:copy": "cpx \"./src/assets/**/!(*.js|*.css|*.map)\" ./build",
-    "build": "npm-run-all -s build:clean build:copy -p build:js build:css"
+    "build:copy": "cpx \"./src/assets/**/!(*.js|*.css|*.map)\" ./build"
   },
   "keywords": [],
   "author": "",
