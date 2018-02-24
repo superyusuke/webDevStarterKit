@@ -5,13 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "npm run watch",
-    "watch": "npm-run-all -p watch:js watch:css watch:server",
+    "watch": "npm-run-all -p watch:js watch:css watch:server watch:autoprefixer",
     "watch:js": "npx parcel watch ./src/js/entry.js --out-dir ./src/assets --out-file app.js",
     "watch:css": "node-sass --watch ./src/sass/index.sass ./src/assets/screen.css --source-map true --include-path ./src/sass",
+    "watch:autoprefixer": "nodemon -e ./src/assets/screen.css -x \"npm run autoprefixer\"",
+    "autoprefixer:assets": "postcss ./src/assets/screen.css --use autoprefixer --replace",
     "watch:server": "browser-sync start --server ./src/assets --files ./src/assets",
     "build": "npm-run-all -s build:clean build:copy -p build:js build:css",
     "build:js": "npx parcel build ./src/js/entry.js --out-dir ./build --out-file app.js",
-    "build:css": "node-sass ./src/sass/index.sass ./build/screen.css --include-path ./src/sass --output-style compressed",
+    "build:css": "npm-run-all -s build:sass build:autoprefixer",
+    "build:sass": "node-sass ./src/sass/index.sass ./build/screen.css --include-path ./src/sass --output-style compressed",
+    "build:autoprefixer": "postcss ./build/screen.css --use autoprefixer --replace",
     "build:clean": "rimraf ./build",
     "build:copy": "cpx \"./src/assets/**/!(*.js|*.css|*.map)\" ./build"
   },
@@ -19,6 +23,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^8.0.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "browser-sync": "^2.23.6",
@@ -26,6 +31,7 @@
     "node-sass": "^4.7.2",
     "npm-run-all": "^4.1.2",
     "parcel-bundler": "^1.6.2",
+    "postcss-cli": "^5.0.0",
     "rimraf": "^2.6.2"
   }
 }
