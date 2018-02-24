@@ -8,7 +8,8 @@
     "watch": "npm-run-all -p js:watch css:watch server:watch",
     "js:watch": "npx parcel watch ./src/js/entry.js --out-dir ./src/assets --out-file app.js",
     "css:watch": "node-sass --watch ./src/sass/index.sass ./src/assets/screen.css --source-map true --include-path ./src/sass",
-    "server:watch": "browser-sync start --server ./src/assets --files ./src/assets"
+    "server:watch": "browser-sync start --server ./src/assets --files ./src/assets",
+    "js:build": "npx parcel build ./src/js/entry.js --out-dir ./build --out-file app.js"
   },
   "keywords": [],
   "author": "",
